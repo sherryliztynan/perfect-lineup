@@ -91,5 +91,26 @@ function validateGames(lineup) {
 }
 
 
+// lineup = = ['1B', '2B', '3B', 'C', 'OF', 'OF', 'OF', 'P', 'SS']
+function validatePositions(lineup) {
+  const testLineup = ['1B', '2B', '3B', 'C', 'OF', 'OF', 'OF', 'P', 'SS']
+  let correctPositions = true
+  let checkRightPosition = lineup.map((rightPosition) => rightPosition.position).sort()
 
+  if (checkRightPosition.length !== testLineup.length) {
+    correctPositions = false
+
+    return correctPositions
+  }
+  for (let i = 0; i < checkRightPosition.length; i++) {
+    if (checkRightPosition[i] !== testLineup[i]) {
+      correctPositions = false
+
+      return correctPositions
+    }
+  }
+
+  return correctPositions
+}
+module.exports = validateLineup
 
