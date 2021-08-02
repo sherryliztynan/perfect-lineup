@@ -54,7 +54,41 @@ function validateTeams(lineup) {
 
   return correctTeams
 }
+// game.Id <3 same game
+function validateGames(lineup) {
+  const gameArray = lineup.map((game) => game.gameId)
 
+  function removeUnique(arr) {
+    var newArr = []
+
+    for (var i = 0; i < arr.length; i++) {
+      var count = 1
+
+      for (var j = i + 1; j < arr.length; j++) {
+        if (arr[j] === arr[i]) {
+          count++
+        }
+      }
+      if (count > 3) {
+        newArr.push(arr[i])
+      }
+    }
+
+    return newArr
+  }
+  let correctGames = removeUnique(gameArray)
+
+  if (correctGames.length > 0) {
+    correctGames = false
+
+    return correctGames
+  }
+  else {
+    correctGames = true
+  }
+
+  return correctGames
+}
 
 
 
